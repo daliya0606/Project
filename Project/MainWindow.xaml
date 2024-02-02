@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+    Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="Choice_person" Content="Label" Margin="25,25,560,375" Background="#FFA40E0E"/>
+        <Label x:Name="Choice_name_person" Content="Label" Margin="25,89,560,311" Background="#FF598C31"/>
+        <ComboBox x:Name="Choice_person_comboBox" Width="120" Margin="270,27,410,372" ItemsSource="{Binding items}"/>
+        <TextBox x:Name="Choice_name_TextBox" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="270,123,410,275"/>
+        <Label x:Name="strength" Content="какая то харка" HorizontalAlignment="Left" Height="35" Margin="25,217,0,0" VerticalAlignment="Top" Width="165"/>
+
+        <Label x:Name="vitality" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,284,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="health" Content="хп" HorizontalAlignment="Left" Height="35" Margin="225,217,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="mana" Content="мана" HorizontalAlignment="Left" Height="35" Margin="395,217,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="dexterity" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,324,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="inteligence" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,359,0,0" VerticalAlignment="Top" Width="165"/>
+
     </Grid>
 </Window>
