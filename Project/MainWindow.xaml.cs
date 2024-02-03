@@ -30,20 +30,22 @@ namespace Project
             InitializeComponent();
             items = new string[] { "Warrior", "Item 2", "Item 3" };
             DataContext = this;
-            Choice_name_person.Content = "Введите имя перса";
-            Choice_person.Content = "Выберите перса";
+            Choice_name_person.Content = "Введите имя персонажа:";
+            Choice_person.Content = "Выберите персонажа:";
             strength.Content = $"strengt равно {warrior.Strength.ToString()}";
             vitality.Content = $"vitality {warrior.Vitality.ToString()}";
             dexterity.Content = $"dex {warrior.Dexterity.ToString()}";
             inteligence.Content = $"int {warrior.Inteligence.ToString()}";
-            health.Content = $"hp: {warrior.Health.ToString()} / {warrior.MaxHealth.ToString()}";
-            mana.Content = $"mana {warrior.Mana.ToString()}";
+            HP.Content = $"hp: {warrior.Health.ToString()} / {warrior.MaxHealth.ToString()}";
+            MP.Content = $"mana {warrior.Mana.ToString()}";
 
         }
         public void statsUpdate()
         {
             
         }
+
+        
     }
 }
 

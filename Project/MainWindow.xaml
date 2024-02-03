@@ -8,17 +8,78 @@
         
     Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label x:Name="Choice_person" Content="Label" Margin="25,25,560,375" Background="#FFA40E0E"/>
-        <Label x:Name="Choice_name_person" Content="Label" Margin="25,89,560,311" Background="#FF598C31"/>
-        <ComboBox x:Name="Choice_person_comboBox" Width="120" Margin="270,27,410,372" ItemsSource="{Binding items}"/>
-        <TextBox x:Name="Choice_name_TextBox" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="270,123,410,275"/>
-        <Label x:Name="strength" Content="какая то харка" HorizontalAlignment="Left" Height="35" Margin="25,217,0,0" VerticalAlignment="Top" Width="165"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/фон.png"/>
+        </Grid.Background>
+        <Label x:Name="strength" Content="Strengh:" HorizontalAlignment="Left" Height="35" Margin="25,161,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Choice_person" Content="Перс" HorizontalAlignment="Left" Height="32" Margin="25,25,0,0" VerticalAlignment="Top" Width="215" FontSize="16" Foreground="White" Background="{x:Null}"/>
+        <Label x:Name="Choice_name_person" Content="Имя перса" HorizontalAlignment="Left" Height="30" Margin="25,79,0,0" VerticalAlignment="Top" Width="215" Foreground="White" FontSize="16"/>
+        <TextBox x:Name="Choice_name_TextBox" HorizontalAlignment="Left" Height="30" Margin="240,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Background="{x:Null}" Foreground="White" FontSize="16" BorderBrush="#FF424975"/>
 
-        <Label x:Name="vitality" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,284,0,0" VerticalAlignment="Top" Width="165"/>
-        <Label x:Name="health" Content="хп" HorizontalAlignment="Left" Height="35" Margin="225,217,0,0" VerticalAlignment="Top" Width="165"/>
-        <Label x:Name="mana" Content="мана" HorizontalAlignment="Left" Height="35" Margin="395,217,0,0" VerticalAlignment="Top" Width="165"/>
-        <Label x:Name="dexterity" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,324,0,0" VerticalAlignment="Top" Width="165"/>
-        <Label x:Name="inteligence" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,359,0,0" VerticalAlignment="Top" Width="165"/>
-
+        <Label x:Name="vitality" Content="Vitality:" HorizontalAlignment="Left" Height="35" Margin="25,321,0,0" VerticalAlignment="Top" Width="165" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Dexterity" Content="Dexterity:" HorizontalAlignment="Left" Height="35" Margin="25,214,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Inteligence" Content="Inteligence:" HorizontalAlignment="Left" Height="35" Margin="25,266,0,0" VerticalAlignment="Top" Width="130" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="dexterity" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,356,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="inteligence" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,391,0,0" VerticalAlignment="Top" Width="165"/>
+        <ComboBox x:Name="Choice_person_comboBox" HorizontalAlignment="Left" Height="32" Margin="240,25,0,0" VerticalAlignment="Top" Width="110" ItemsSource="{Binding items}"/>
+        <Button x:Name="One" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,163,0,0" Foreground="White">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+               StrokeThickness="0" Fill="#FF37407A">
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                        VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="One_Копировать" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,216,0,0" Background="#FF343C75" Foreground="White">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                            StrokeThickness="0" Fill="#FF343C75"/>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="One_Копировать1" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,271,0,0" Foreground="White">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                            StrokeThickness="0" Fill="#FF343C75"/>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="One_Копировать2" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,324,0,0" Foreground="White">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                            StrokeThickness="0" Fill="#FF343C75"/>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Label x:Name="HP" Content="HP:" HorizontalAlignment="Left" Height="32" Margin="415,25,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="MP" Content="MP:" HorizontalAlignment="Left" Height="32" Margin="535,25,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" VerticalContentAlignment="Stretch" FontWeight="Bold"/>
+        <Label x:Name="pdam" Content="P.damage:" HorizontalAlignment="Left" Height="29" Margin="320,164,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14" RenderTransformOrigin="0.526,1.036"/>
+        <Label x:Name="armor" Content="Armor:" HorizontalAlignment="Left" Height="29" Margin="481,165,0,0" VerticalAlignment="Top" Width="94" Foreground="White" FontSize="14"/>
+        <Label x:Name="mdam" Content="M.damage:" HorizontalAlignment="Left" Height="28" Margin="320,217,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
+        <Label x:Name="Crtdam" Content="Crt.damage:" HorizontalAlignment="Left" Height="29" Margin="320,269,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
+        <Label x:Name="mdef" Content="M.Defense:" HorizontalAlignment="Left" Height="29" Margin="481,218,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
+        <Label x:Name="crtch" Content="Crt.chanse:" HorizontalAlignment="Left" Height="29" Margin="482,272,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
+        <Label x:Name="MP_Копировать" Content="Tokens:" HorizontalAlignment="Left" Height="30" Margin="415,79,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" VerticalContentAlignment="Stretch" FontWeight="Bold"/>
+        <TextBox x:Name="NumberOfTokens" HorizontalAlignment="Left" Height="30" Margin="500,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="{x:Null}" Foreground="White" FontSize="20" BorderBrush="#FF424975" Text="0"/>
     </Grid>
 </Window>
