@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Project"
+        xmlns:local="clr-namespace:Project" d:DataContext="{d:DesignInstance Type=local:ViewModel}"
         mc:Ignorable="d"
         
     Title="MainWindow" Height="450" Width="800">
@@ -11,18 +11,35 @@
         <Grid.Background>
             <ImageBrush ImageSource="/фон.png"/>
         </Grid.Background>
-        <Label x:Name="strength" Content="Strengh:" HorizontalAlignment="Left" Height="35" Margin="25,161,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="strength" Content="0" HorizontalAlignment="Left" Height="35" Margin="85,161,0,0" VerticalAlignment="Top" Width="60" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Right"/>
         <Label x:Name="Choice_person" Content="Перс" HorizontalAlignment="Left" Height="32" Margin="25,25,0,0" VerticalAlignment="Top" Width="215" FontSize="16" Foreground="White" Background="{x:Null}"/>
         <Label x:Name="Choice_name_person" Content="Имя перса" HorizontalAlignment="Left" Height="30" Margin="25,79,0,0" VerticalAlignment="Top" Width="215" Foreground="White" FontSize="16"/>
         <TextBox x:Name="Choice_name_TextBox" HorizontalAlignment="Left" Height="30" Margin="240,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Background="{x:Null}" Foreground="White" FontSize="16" BorderBrush="#FF424975"/>
 
-        <Label x:Name="vitality" Content="Vitality:" HorizontalAlignment="Left" Height="35" Margin="25,321,0,0" VerticalAlignment="Top" Width="165" Foreground="White" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="Dexterity" Content="Dexterity:" HorizontalAlignment="Left" Height="35" Margin="25,214,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="Inteligence" Content="Inteligence:" HorizontalAlignment="Left" Height="35" Margin="25,266,0,0" VerticalAlignment="Top" Width="130" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="vitality" Content="0" HorizontalAlignment="Left" Height="35" Margin="85,321,0,0" VerticalAlignment="Top" Width="60" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+        <Label x:Name="Dexterity" Content="0" HorizontalAlignment="Left" Height="35" Margin="85,214,0,0" VerticalAlignment="Top" Width="60" Foreground="White" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Right">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="Inteligence" Content="0" HorizontalAlignment="Left" Height="35" Margin="85,266,0,0" VerticalAlignment="Top" Width="60" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Right"/>
         <Label x:Name="dexterity" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,356,0,0" VerticalAlignment="Top" Width="165"/>
         <Label x:Name="inteligence" Content="что то еще" HorizontalAlignment="Left" Height="35" Margin="25,391,0,0" VerticalAlignment="Top" Width="165"/>
-        <ComboBox x:Name="Choice_person_comboBox" HorizontalAlignment="Left" Height="32" Margin="240,25,0,0" VerticalAlignment="Top" Width="110" ItemsSource="{Binding items}"/>
-        <Button x:Name="One" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,163,0,0" Foreground="White">
+        <ComboBox x:Name="Choice_person_comboBox" HorizontalAlignment="Left" Height="32" Margin="240,25,0,0" VerticalAlignment="Top" Width="110" ItemsSource="{Binding items}" SelectionChanged="Choice_person_comboBox_SelectionChanged_1"/>
+        <Button x:Name="One" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code"  RenderTransformOrigin="0.333,0.935" Margin="185,163,0,0" Foreground="White" Click="One_Click_1">
+            <Button.Tag>
+                <x:Array Type="local:Unit">
+                    <local:Warrior />
+                    <local:Rogue />
+                    <local:Wizard />
+                    
+                </x:Array>
+            </Button.Tag>
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
@@ -35,7 +52,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="One_Копировать" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,216,0,0" Background="#FF343C75" Foreground="White">
+        <Button x:Name="two" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code"  RenderTransformOrigin="0.333,0.935" Margin="185,216,0,0" Background="#FF343C75" Foreground="White" Click="Two_Click">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
@@ -47,7 +64,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="One_Копировать1" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,271,0,0" Foreground="White">
+        <Button x:Name="three" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code"  RenderTransformOrigin="0.333,0.935" Margin="185,271,0,0" Foreground="White" Click="three_click">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
@@ -59,7 +76,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="One_Копировать2" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code" Click="One_Click" RenderTransformOrigin="0.333,0.935" Margin="185,324,0,0" Foreground="White">
+        <Button x:Name="throe" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code"  RenderTransformOrigin="0.333,0.935" Margin="185,324,0,0" Foreground="White" Click="throe_Click">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
@@ -73,13 +90,40 @@
         </Button>
         <Label x:Name="HP" Content="HP:" HorizontalAlignment="Left" Height="32" Margin="415,25,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="MP" Content="MP:" HorizontalAlignment="Left" Height="32" Margin="535,25,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" VerticalContentAlignment="Stretch" FontWeight="Bold"/>
-        <Label x:Name="pdam" Content="P.damage:" HorizontalAlignment="Left" Height="29" Margin="320,164,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14" RenderTransformOrigin="0.526,1.036"/>
-        <Label x:Name="armor" Content="Armor:" HorizontalAlignment="Left" Height="29" Margin="481,165,0,0" VerticalAlignment="Top" Width="94" Foreground="White" FontSize="14"/>
-        <Label x:Name="mdam" Content="M.damage:" HorizontalAlignment="Left" Height="28" Margin="320,217,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
-        <Label x:Name="Crtdam" Content="Crt.damage:" HorizontalAlignment="Left" Height="29" Margin="320,269,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
-        <Label x:Name="mdef" Content="M.Defense:" HorizontalAlignment="Left" Height="29" Margin="481,218,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
-        <Label x:Name="crtch" Content="Crt.chanse:" HorizontalAlignment="Left" Height="29" Margin="482,272,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
-        <Label x:Name="MP_Копировать" Content="Tokens:" HorizontalAlignment="Left" Height="30" Margin="415,79,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" VerticalContentAlignment="Stretch" FontWeight="Bold"/>
+        <Label x:Name="pdam1" Content="P.damage:" HorizontalAlignment="Left" Height="29" Margin="320,164,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14" RenderTransformOrigin="0.526,1.036"/>
+        <Label x:Name="armor1" Content="Armor:" HorizontalAlignment="Left" Height="25" Margin="505,164,0,0" VerticalAlignment="Top" Width="55" Foreground="White" FontSize="14"/>
+        <Label x:Name="mdam1" Content="M.damage:" HorizontalAlignment="Left" Height="28" Margin="320,217,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
+        <Label x:Name="Crtdam1" Content="Crt.damage:" HorizontalAlignment="Left" Height="29" Margin="320,269,0,0" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="14"/>
+        <Label x:Name="mdef1" Content="M.Defense:" HorizontalAlignment="Left" Height="26" Margin="481,218,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
+        <Label x:Name="crtch1" Content="Crt.chanse:" HorizontalAlignment="Left" Height="29" Margin="482,269,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontSize="14"/>
+        <Label x:Name="MP_1" Content="Tokens:" HorizontalAlignment="Left" Height="30" Margin="415,79,0,0" VerticalAlignment="Top" Width="85" Background="#FF414B8E" FontSize="18" VerticalContentAlignment="Stretch" FontWeight="Bold"/>
         <TextBox x:Name="NumberOfTokens" HorizontalAlignment="Left" Height="30" Margin="500,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="{x:Null}" Foreground="White" FontSize="20" BorderBrush="#FF424975" Text="0"/>
+        <Label x:Name="numberTokens" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="65" Margin="591,62,0,0" VerticalAlignment="Top" Width="64" FontSize="36" Foreground="#FF2B3588"/>
+        <Label Content="Strenght" HorizontalAlignment="Left" Height="25" Margin="10,164,0,0" VerticalAlignment="Top" Width="55" Foreground="White"/>
+        <Label Content="Dexterity" HorizontalAlignment="Left" Height="25" Margin="10,219,0,0" VerticalAlignment="Top" Width="60" Foreground="White"/>
+        <Label Content="Inteligence" HorizontalAlignment="Left" Height="25" Margin="10,271,0,0" VerticalAlignment="Top" Width="70" Foreground="White"/>
+        <Label Content="Vitality" HorizontalAlignment="Left" Height="25" Margin="10,324,0,0" VerticalAlignment="Top" Width="55" Foreground="White"/>
+        <Label x:Name="pdam" Content="0" HorizontalAlignment="Left" Height="25" Margin="405,164,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14" RenderTransformOrigin="0.526,1.036"/>
+        <Label x:Name="mdam" Content="0" HorizontalAlignment="Left" Height="30" Margin="405,219,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="crtdam" Content="0" HorizontalAlignment="Left" Height="29" Margin="405,269,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="mdef" Content="0" HorizontalAlignment="Left" Height="31" Margin="558,218,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="armor" Content="0" HorizontalAlignment="Left" Height="31" Margin="558,163,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="crtch" Content="0" HorizontalAlignment="Left" Height="31" Margin="558,269,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="14"/>
+        <Label x:Name="hp" Content="0" HorizontalAlignment="Left" Height="32" Margin="450,25,0,0" VerticalAlignment="Top" Width="50" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="mp" Content="0" HorizontalAlignment="Left" Height="32" Margin="573,25,0,0" VerticalAlignment="Top" Width="50" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="Add" Width="30" Content="+" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" FontSize="18" FontFamily="Cascadia Code"  RenderTransformOrigin="0.333,0.935" Margin="502,129,0,0" Foreground="White" Click="Add_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                            StrokeThickness="0" Fill="#FF37407A"/>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
     </Grid>
 </Window>

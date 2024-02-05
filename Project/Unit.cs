@@ -1,8 +1,14 @@
-﻿using System;
+﻿
+using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Project
 {
@@ -29,17 +35,33 @@ namespace Project
         private int _crtChanse;
         private int _crtDamage;
         private int _defense;
+        private double _countPDamage;
+        private double _countArmor;
+        private double _countMDamage;
+        private double _countMDefence;
+        private double _countCrtChanse;
+        private double _countCrtDamage;
+        private double _countHealthVit;
+        private int intNumber;
+        private double DoubleNumber;
+        private double _countHealthStr;
+        private double _valueManaInt;
 
-
-        public Unit( int maxHealth, int health, int strength,
+        public Unit(int strength,
             int dexterity, int inteligence, int vitality, int maxStrength,
-            int maxDexterity, int maxInteligence, int maxVitality, int mana, int maxMana, int damage, int crtDamage,
-            int defense, int crtChanse, int maxDamage, int armor, int maxDefense)
+            int maxDexterity, int maxInteligence, int maxVitality,
+            double countPDamage, double countArmor, double countMDamage, double countMDefence,
+            double countCrtChanse, double countCrtDamage, double countHealthVit, double countHealthStr,
+            double valueManaInt, string name
+
+           )
         {
 
-            
-            _health = health;
-            _maxHealth = maxHealth;
+
+            Strength = strength;
+            Dexterity = dexterity;
+            Inteligence = inteligence;
+            Vitality = vitality;
             _strength = strength;
             _vitality = vitality;
             _inteligence = inteligence;
@@ -47,44 +69,35 @@ namespace Project
             _maxDexterity = maxDexterity;
             _maxInteligence = maxInteligence;
             _maxVitality = maxVitality;
-            _mana = mana;
-            _maxMana = maxMana;
-            _damage = damage;
-            _crtDamage = crtDamage;
             _dexterity = dexterity;
-            _defense = defense;
-            _crtChanse = crtChanse;
-            _maxDamage = maxDamage;
-            _armor = armor;
-            _maxDefense = maxDefense;
-
+            _countHealthVit = countHealthVit;
+            _countHealthStr = countHealthStr;
+            _valueManaInt = valueManaInt;
+            _countPDamage = countPDamage;
+            _countArmor = countArmor;
+            _countMDamage = countMDamage;
+            _countMDefence = countMDefence;
+            _countCrtChanse = countCrtChanse;
+            _countCrtDamage = countCrtDamage;
+            _name = name;
 
 
         }
+        public string Name { get { return _name; } set { _name = value; } }
+        
 
-
-
-
-        //public Warrior()
-        //{
-        //    Strength = 30;
-        //    Dexterity = 15;
-        //    Inteligence = 10;
-        //    Vitality = 25;
-        //    addVital();
-        //}
         public int Strength
         {
             get { return _strength; }
             set
             {
-                _strength = value;
-                PDmg = value;
-                if (_strength > _maxStrength)
+
+                if (_strength >= _maxStrength)
                 {
-                    Strength = _maxStrength;
+                    _strength = _maxStrength;
                 }
-                addVital();
+                else _strength = value;
+
             }
         }
         public int Vitality
@@ -92,13 +105,14 @@ namespace Project
             get { return _vitality; }
             set
             {
-                _vitality = value;
-                if (_vitality > _maxVitality)
+
+                if (_vitality >= _maxVitality)
                 {
                     _vitality = _maxVitality;
-
                 }
-                addVital();
+                else _vitality = value;
+
+                
             }
         }
         public int Inteligence
@@ -106,35 +120,13 @@ namespace Project
             get { return _inteligence; }
             set
             {
-                _inteligence = value;
-                int mp = 0;
-                int mdmg = 0;
-                double mdmg_b = 0;
-                int mdef = 0;
-                double mdef_b = 0;
-                if (_inteligence > _maxInteligence)
+
+                if (_inteligence >= _maxVitality)
                 {
                     _inteligence = _maxInteligence;
                 }
-                for (int i = 0; i < _inteligence; i++)
-                {
-                    mp++;
-                    mdmg_b += 0.2;
-                    mdef_b += 0.5;
-                    if (mdmg_b >= 1)
-                    {
-                        mdmg++;
-                        mdmg_b--;
-                    }
-                    if (mdef_b >= 1)
-                    {
-                        mdef++;
-                        mdef_b--;
-                    }
-                }
-                MDef = mdef;
-                MDmg = mdmg;
-                MaxMana = mp;
+                else _inteligence = value;
+
             }
         }
         public int Dexterity
@@ -142,33 +134,13 @@ namespace Project
             get { return _dexterity; }
             set
             {
-                _dexterity = value;
-                Armor = value;
-                int crtch = 0;
-                double crtch_b = 0;
-                int crtdmg = 0;
-                double crtdmg_b = 0;
-                if (_dexterity > _maxDexterity)
+
+                if (_dexterity >= _maxDexterity)
                 {
                     _dexterity = _maxDexterity;
                 }
-                for (int i = 0; i <= _dexterity; i++)
-                {
-                    crtch_b += 0.2;
-                    crtdmg_b += 0.1;
-                    if (crtch_b >= 1)
-                    {
-                        crtch++;
-                        crtch_b--;
-                    }
-                    if (crtdmg_b >= 1)
-                    {
-                        crtdmg++;
-                        crtdmg_b--;
-                    }
-                }
-                CrtChance = crtch;
-                CrtDmg = crtdmg;
+                else _dexterity = value;
+
             }
         }
         public int Health
@@ -176,46 +148,14 @@ namespace Project
             get { return _health; }
             set { _health = value; }
         }
-        public int MaxHealth
-        {
-            get { return _maxHealth; }
-            set
-            {
-                if (Health == MaxHealth)
-                {
-                    _maxHealth = value;
-                    _health = value;
-                }
-                else
-                    _maxHealth = value;
-            }
-        }
+        
         public int Mana
         {
             get { return _mana; }
-            set
-            {
-                _mana = value;
-                if (_mana > _maxMana)
-                    _mana = _maxMana;
-            }
+            set { _mana = value; }
         }
 
-        public int MaxMana
-        {
-            get { return _maxMana; }
-            set
-            {
-
-                if (Mana == MaxMana)
-                {
-                    _maxMana = value;
-                    _mana = _maxMana;
-                }
-                else
-                    _maxMana = value;
-            }
-        }
+        
         public int PDmg
         {
             get { return _damage; }
@@ -224,18 +164,12 @@ namespace Project
         public int Armor
         {
             get { return _armor; }
-            set
-            {
-                _armor = value;
-            }
+            set { _armor = value;}
         }
         public int MDef
         {
             get { return _maxDefense; }
-            set
-            {
-                _maxDefense = value;
-            }
+            set { _maxDefense = value;}
         }
         public int MDmg
         {
@@ -250,25 +184,206 @@ namespace Project
         public int CrtDmg
         {
             get { return _crtDamage; }
-            set
-            {
-                _crtDamage = value;
-            }
+            set { _crtDamage = value;}
         }
-        public void addVital()
+        public void StartCrtDamage()
         {
-            int hp = 0;
-            for (int i = 0; i < _vitality; i++)
+            CrtDmg = 0;
+            double def = 0;
+            int defInt = 0;
+            CheckNumber(_countCrtDamage);
+            for (int i = 0; i < Dexterity; i++)
             {
-                hp += 2;
+
+                def += (float)DoubleNumber;
+                if (def >= 1)
+                {
+                    CrtDmg++;
+                    defInt = (int)def;
+                    def -= defInt;
+                }
+
+                CrtDmg += intNumber;
             }
-            for (int i = 0; i < _strength; i++)
-            {
-                hp++;
-            }
-            MaxHealth = hp;
         }
+        public void StartCrtChance()
+        {
+            CrtChance = 0;
+            double def = 0;
+            int defInt = 0;
+            CheckNumber(_countCrtChanse);
+            for (int i = 0; i < Dexterity; i++)
+            {
+
+                def += (float)DoubleNumber;
+                if (def >= 1)
+                {
+                    CrtChance++;
+                    defInt = (int)def;
+                    def -= defInt;
+                }
+
+                CrtChance += intNumber;
+            }
+        }
+        public void StartMDefense()
+        {
+            MDef = 0;
+            double def = 0;
+            int defInt = 0;
+            CheckNumber(_countMDefence);
+            for (int i = 0; i < Inteligence; i++)
+            {
+
+                def += (float)DoubleNumber;
+                if (def >= 1)
+                {
+                    MDef++;
+                    defInt = (int)def;
+                    def -= defInt;
+                }
+
+                MDef += intNumber;
+            }
+        }
+        public void StartMDamage()
+        {
+            MDmg = 0;
+            double def = 0;
+            int defInt = 0;
+            CheckNumber(_countMDamage);
+            for (int i = 0; i < Inteligence; i++)
+            {
+
+                def += (float)DoubleNumber;
+                if (def >= 1)
+                {
+                    MDmg++;
+                    defInt = (int)def;
+                    def -= defInt;
+                }
+
+                MDmg += intNumber;
+            }
+        }
+        public void StartArmor()
+        {
+            Armor = 0;
+            double def = 0;
+            CheckNumber(_countArmor);
+            for (int i = 0; i < Dexterity; i++)
+            {
+
+                def += DoubleNumber;
+                
+                if ((int)def >= 1)
+                {
+                    Armor++;
+                    def--;
+                }
+                Armor += intNumber;
+
+
+
+            }
+        }
+        public void StartPDamage()
+        {PDmg = 0;
+            double def = 0;
+            CheckNumber(_countPDamage);
+            for (int i = 0; i < Strength; i++)
+            {
+                
+                def += DoubleNumber;
+                if (def >= 1)
+                {
+                    PDmg++;
+                    def--;
+                }
+                PDmg += intNumber;
+            }
+            
+        }
+        public void StartMana()
+        {   Mana = 0; 
+            double def = 0;
+            CheckNumber(_valueManaInt);
+             
+            for (int i = 0; i < Inteligence; i++)
+            {
+                
+                def += DoubleNumber;
+                if (def >= 1)
+                {
+                    Mana++;
+                    def--;
+                }
+                Mana += intNumber;
+
+
+                
+            }
+            
+        }
+        public void StartHealth()
+        {
+            Health = 0;
+            CheckNumber(_countHealthVit);
+            double def = 0;
+            int defInt = 0;
+            for (int i = 0; i < Vitality; i++)
+            {
+                def += (float)DoubleNumber;
+                
+                if (def >= 1)
+                {
+                    Health++;
+                    defInt = (int)def;
+                    def-= defInt;
+                    
+                }
+                Health += intNumber;
+
+
+            }
+            
+            CheckNumber(_countHealthStr);
+            def = 0;
+            for (int i = 0; i < Strength; i++)
+            {
+
+                def += (float)DoubleNumber;
+                if (def >= 1)
+                {
+                    Health++;
+                    defInt = (int)def;
+                    def -= defInt;
+                }
+
+                Health += intNumber;
+            }
+            
+
+        }
+        public void CheckNumber(double number)
+        {
+            if ((int)number == number)
+            {
+               intNumber = (int)number;
+                DoubleNumber = 0;
+            }
+            else
+            {
+                intNumber = (int)number;
+               
+                DoubleNumber = number - (float)intNumber;  
+            };
+            
+        }
+        
     }
 
 }
+
+
 
