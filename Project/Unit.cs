@@ -96,6 +96,10 @@ namespace Project
                 {
                     _strength = _maxStrength;
                 }
+                else if (_strength <= 0)
+                {
+                    _strength = 0;
+                }
                 else _strength = value;
 
             }
@@ -109,6 +113,10 @@ namespace Project
                 if (_vitality >= _maxVitality)
                 {
                     _vitality = _maxVitality;
+                }
+                else if (_vitality <= 0)
+                {
+                    _vitality = 0;
                 }
                 else _vitality = value;
 
@@ -125,6 +133,10 @@ namespace Project
                 {
                     _inteligence = _maxInteligence;
                 }
+                else if (_inteligence <= 0)
+                {
+                    _inteligence = 0;
+                }
                 else _inteligence = value;
 
             }
@@ -138,6 +150,10 @@ namespace Project
                 if (_dexterity >= _maxDexterity)
                 {
                     _dexterity = _maxDexterity;
+                }
+                else if (_dexterity <= 0)
+                {
+                    _dexterity = 0;
                 }
                 else _dexterity = value;
 

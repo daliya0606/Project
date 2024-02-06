@@ -88,7 +88,7 @@ namespace Project
         {
             numberTokens.Content = NumberOfTokens.Text;
             string strToken = NumberOfTokens.Text;
-            Token += Convert.ToInt32(strToken);       
+            Token += Convert.ToInt32(strToken);
         }
 
         private void One_Click_1(object sender, RoutedEventArgs e)
@@ -143,6 +143,81 @@ namespace Project
                 unit.StartMana();
                 
                 Token--;
+                CreateUnit(unit);
+            }
+        }
+
+        private void NumberOfTokens_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NumberOfTokens.GotFocus += RemoveText;
+        }
+
+        private void RemoveText(object sender, RoutedEventArgs e)
+        {
+            // Удаляем текст-подсказку при фокусировке текстового поля
+            TextBox NumberOfTokens = (TextBox)sender;
+            if (NumberOfTokens.Text == NumberOfTokens.Tag as string)
+            {
+                NumberOfTokens.Text = "";
+            }
+            else
+            {
+                NumberOfTokens.Text = "";
+            }
+        }
+
+        private void Minus_1_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & Token > 0)
+            {
+                Token++;
+                unit.Strength -= 1;
+                unit.StartHealth();
+                unit.StartPDamage();
+                CreateUnit(unit);
+            }
+            else if (unit != null & unit.Strength == 0)
+            {
+                Token += 0;
+            }
+        }
+
+        private void Minus_2_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & Token > 0)
+            {
+                unit.Dexterity -= 1;
+                unit.StartCrtDamage();
+                unit.StartCrtChance();
+                unit.StartArmor();
+
+                Token++;
+                CreateUnit(unit);
+            }
+        }
+
+        private void Minus_3_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & Token > 0)
+            {
+                unit.Inteligence -= 1;
+                unit.StartMDefense();
+                unit.StartMDamage();
+                unit.StartMana();
+
+                Token++;
+                CreateUnit(unit);
+            }
+        }
+
+        private void Minus_4_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & Token > 0)
+            {
+                unit.Vitality -= 1;
+                unit.StartHealth();
+
+                Token++;
                 CreateUnit(unit);
             }
         }
