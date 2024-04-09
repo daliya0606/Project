@@ -1,0 +1,15 @@
+C:\Users\саша\source\repos\Project\resistance\bin\Debug\resistance.exe.config
+C:\Users\саша\source\repos\Project\resistance\bin\Debug\resistance.exe
+C:\Users\саша\source\repos\Project\resistance\bin\Debug\resistance.pdb
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.csproj.AssemblyReference.cache
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\MainWindow.g.cs
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\App.g.cs
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance_MarkupCompile.cache
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance_MarkupCompile.lref
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\MainWindow.baml
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.g.resources
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.Properties.Resources.resources
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.csproj.GenerateResource.cache
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.csproj.CoreCompileInputs.cache
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.exe
+C:\Users\саша\source\repos\Project\resistance\obj\Debug\resistance.pdb

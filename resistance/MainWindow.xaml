@@ -1,0 +1,33 @@
+﻿<Window x:Class="resistance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:resistance"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="440" Width="475">
+    <Grid>
+        <TextBox x:Name="CurrentStrength1" HorizontalAlignment="Left" Margin="130,151,0,0" VerticalAlignment="Top" Width="100" Text="0" Height="22" TextWrapping="Wrap" TextAlignment="Justify" TextChanged="CurrentStrength1_TextChanged" PreviewTextInput="CurrentStrength1_PreviewTextInput"/>
+        <Label Content="Сила тока:" HorizontalAlignment="Left" Margin="42,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CurrentStrength2" HorizontalAlignment="Left" Margin="341,151,0,0" VerticalAlignment="Top" Width="100" Text="0" Height="22" TextWrapping="Wrap" TextAlignment="Justify" TextChanged="CurrentStrength2_TextChanged" PreviewTextInput="CurrentStrength2_PreviewTextInput"/>
+        <Label Content="Сила тока:" HorizontalAlignment="Left" Margin="253,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Voltage1" HorizontalAlignment="Left" Margin="130,193,0,0" VerticalAlignment="Top" Width="100"  Text="0" Height="22" TextWrapping="Wrap" TextAlignment="Justify" TextChanged="Voltage1_TextChanged" PreviewTextInput="Voltage1_PreviewTextInput"/>
+        <Label Content="Напряжение:" HorizontalAlignment="Left" Margin="42,189,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Voltage2" HorizontalAlignment="Left" Margin="341,193,0,0" VerticalAlignment="Top" Width="100" Text="0" Height="22" TextWrapping="Wrap" TextAlignment="Justify" TextChanged="Voltage2_TextChanged" PreviewTextInput="Voltage2_PreviewTextInput"/>
+        <Label Content="Напряжение:" HorizontalAlignment="Left" Margin="253,189,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="240,31,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.517,-0.044" Height="26" />
+        <Label Content="Выберите тип соединения:" HorizontalAlignment="Left" Margin="83,31,0,0" VerticalAlignment="Top"/>
+        <Button Content="Рассчитать сопротивления" HorizontalAlignment="Left" Margin="154,248,0,0" VerticalAlignment="Top" Width="158" Height="27" Background="#FF6AB0CE" Click="Button_Click"/>
+        <Label Content="1 Резистор" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="2 Резистор" HorizontalAlignment="Left" Margin="295,108,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="R1" Content="Сопротивление 1:" HorizontalAlignment="Left" Margin="42,294,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="R2" Content="Сопротивление 1:" HorizontalAlignment="Left" Margin="253,294,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="R" Content="Общее сопротивление:" HorizontalAlignment="Left" Margin="119,348,0,0" VerticalAlignment="Top" Width="142"/>
+        <Label x:Name="Resistance1"  HorizontalAlignment="Left" Margin="150,294,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+        <Label x:Name="Resistance2"  HorizontalAlignment="Left" Margin="360,294,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+        <Label x:Name="TotalResistance"  HorizontalAlignment="Left" Margin="260,348,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+        <Button x:Name="Clear" Content="Очистить " HorizontalAlignment="Left" Margin="333,83,0,0" VerticalAlignment="Top" Click="Clear_Click"/>
+        <Label x:Name="Om" Content="Ом" HorizontalAlignment="Left" Margin="391,348,0,0" VerticalAlignment="Top" Width="34"/>
+
+    </Grid>
+</Window>
