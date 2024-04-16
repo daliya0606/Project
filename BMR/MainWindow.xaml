@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BMR"
         mc:Ignorable="d"
         Title="MainWindow" Height="575" Width="470">
-    <Grid>
+    <Grid Opacity="0.8">
         <Grid.Background>
             <ImageBrush Opacity="0.8" ImageSource="/flours.jpg"/>
         </Grid.Background>
@@ -16,9 +16,9 @@
         <Label Content="Вес/кг:" HorizontalAlignment="Left" Margin="99,219,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Рост/см:" HorizontalAlignment="Left" Margin="84,287,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Активность:" HorizontalAlignment="Left" Margin="52,354,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="Age" HorizontalAlignment="Left" Height="32" Margin="205,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFF9A0BE" FontSize="18" TextChanged="Age_TextChanged" />
-        <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="32" Margin="205,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFDBA6EC" FontSize="18"/>
-        <TextBox x:Name="Height" HorizontalAlignment="Left" Height="32" Margin="205,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFA7D0D9" FontSize="18"/>
+        <TextBox x:Name="Age" HorizontalAlignment="Left" Height="32" Margin="205,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFF9A0BE" FontSize="18" TextChanged="Age_TextChanged" PreviewTextInput="Age_PreviewTextInput" />
+        <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="32" Margin="205,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFDBA6EC" FontSize="18" PreviewTextInput="Weight_PreviewTextInput" TextChanged="Weight_TextChanged"/>
+        <TextBox x:Name="Height" HorizontalAlignment="Left" Height="32" Margin="205,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFA7D0D9" FontSize="18" PreviewTextInput="Height_PreviewTextInput" TextChanged="Height_TextChanged"/>
         <ComboBox x:Name="TheGender" HorizontalAlignment="Left" Height="32" Margin="205,92,0,0" VerticalAlignment="Top" Width="190" FontSize="18">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
@@ -35,9 +35,9 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <Button x:Name="Clear" Content="Очистить" HorizontalAlignment="Left" Height="25" Margin="30,424,0,0" VerticalAlignment="Top" Width="125" Background="#FFF3F16F" FontSize="16" />
-        <Button x:Name="Calculate" Content="Вычислить" HorizontalAlignment="Center" Height="25" Margin="0,424,0,0" VerticalAlignment="Top" Width="126" Background="#FFF3F16F" FontSize="16" />
-        <Button x:Name="Close" Content="Закрыть" HorizontalAlignment="Left" Height="25" Margin="315,424,0,0" VerticalAlignment="Top" Width="125" Background="#FFF3F16F" FontSize="16" />
+        <Button x:Name="Clear" Content="Очистить" HorizontalAlignment="Left" Height="25" Margin="30,424,0,0" VerticalAlignment="Top" Width="125" Background="#FFF3F16F" FontSize="16" Click="Clear_Click" />
+        <Button x:Name="Calculate" Content="Вычислить" HorizontalAlignment="Center" Height="25" Margin="0,424,0,0" VerticalAlignment="Top" Width="126" Background="#FFF3F16F" FontSize="16" Click="Calculate_Click" />
+        <Button x:Name="Close" Content="Закрыть" HorizontalAlignment="Left" Height="25" Margin="315,424,0,0" VerticalAlignment="Top" Width="125" Background="#FFF3F16F" FontSize="16" Click="Close_Click" />
         <Label Content="BMR:" HorizontalAlignment="Left" Height="35" Margin="30,484,0,0" VerticalAlignment="Top" Width="60" Background="#FFF9A0BE" FontSize="20" FontWeight="Bold"/>
         <Label Content="TDEE:" HorizontalAlignment="Left" Height="35" Margin="250,484,0,0" VerticalAlignment="Top" Width="65" Background="#FFF9A0BE" FontSize="20" FontWeight="Bold"/>
         <Label x:Name="BMR" Content="" HorizontalAlignment="Left" Margin="90,484,0,0" VerticalAlignment="Top" Height="35" Width="143" FontSize="18"/>

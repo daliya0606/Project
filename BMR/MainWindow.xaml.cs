@@ -41,6 +41,8 @@ namespace BMR
         string globalAge;
         string globalWeight;
         string globalHeight;
+        string globalBMR;
+        string globalTEED;
 
         private void RemovingTheSymbols(TextBox textBox)
         {
@@ -52,17 +54,84 @@ namespace BMR
                 }
             };
         }
-        private void textBox1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+
+
+        private void Age_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            TextBox CurrentStrength1 = sender as TextBox;
+            if (!char.IsDigit(e.Text, 0))
             {
                 e.Handled = true;
             }
         }
+
+        private void Weight_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox CurrentStrength1 = sender as TextBox;
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Height_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox CurrentStrength1 = sender as TextBox;
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Height_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            globalHeight = Height.Text;
+            if (int.Parse(globalHeight) > 250 || int.Parse(globalHeight) < 50)
+            {
+                MessageBox.Show("Ведите коректное значение роста");
+            }
+        }
+        
+
         private void Age_TextChanged(object sender, TextChangedEventArgs e)
         {
-            RemovingTheSymbols(Age);
             globalAge = Age.Text;
+        }
+
+        private void Weight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            globalWeight = Weight.Text;
+        }
+
+        private void Calculate_Click(object sender, RoutedEventArgs e)
+        {
+            if (TheGender != null && Activity != null && globalAge != null && globalWeight != null && globalHeight != null)
+               
+            {
+                string selectedGender = (string)TheGender.SelectedItem;
+                string selectedActiviry = (string)Activity.SelectedItem;
+                if (selectedGender == "Мужской")
+                {
+                    switch (selectedActiviry)
+                    {
+                        case Сидячий:
+                    }    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Укажите все значения");
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
