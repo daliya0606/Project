@@ -42,6 +42,8 @@
         <Label Content="TDEE:" HorizontalAlignment="Left" Height="35" Margin="250,484,0,0" VerticalAlignment="Top" Width="65" Background="#FFF9A0BE" FontSize="20" FontWeight="Bold"/>
         <Label x:Name="BMR" Content="" HorizontalAlignment="Left" Margin="90,484,0,0" VerticalAlignment="Top" Height="35" Width="143" FontSize="18"/>
         <Label x:Name="TDEE" Content="" HorizontalAlignment="Left" Margin="315,484,0,0" VerticalAlignment="Top" Height="35" Width="143" FontSize="18"/>
-
+        <Label x:Name="Mistake_Weight" Content="Label" HorizontalAlignment="Left" Height="24" Margin="205,256,0,0" Width="190" VerticalAlignment="Top" FontSize="8" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="Mistake_Age" Content="Label" HorizontalAlignment="Left" Height="24" Margin="205,186,0,0" Width="190" VerticalAlignment="Top" FontSize="8" Foreground="Red" FontWeight="Bold"/>
+        <Label x:Name="Mistake_Height" Content="Label" HorizontalAlignment="Left" Height="24" Margin="205,324,0,0" Width="190" VerticalAlignment="Top" FontSize="8" Foreground="Red" FontWeight="Bold"/>
     </Grid>
 </Window>

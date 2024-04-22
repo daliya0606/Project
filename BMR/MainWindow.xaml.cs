@@ -23,6 +23,9 @@ namespace BMR
         public MainWindow()
         {
             InitializeComponent();
+            Mistake_Age.Visibility = Visibility.Collapsed;
+            Mistake_Height.Visibility = Visibility.Collapsed;
+            Mistake_Weight.Visibility = Visibility.Collapsed;
             string[] gender = { "Мужской", "Женский" };
             TheGender.ItemsSource = gender;
             if (TheGender.SelectedItem == null)
@@ -85,22 +88,61 @@ namespace BMR
 
         private void Height_TextChanged(object sender, TextChangedEventArgs e)
         {
-            globalHeight = Height.Text;
-            if (int.Parse(globalHeight) > 250 || int.Parse(globalHeight) < 50)
-            {
-                MessageBox.Show("Ведите коректное значение роста");
+            if (!string.IsNullOrWhiteSpace(Height.Text))
+            { 
+                if (int.Parse(Height.Text) > 250 || int.Parse(Height.Text) < 50)
+                {
+                    Mistake_Height.Content = "Введите коректное значение роста!";
+                    Mistake_Height.Visibility = Visibility.Visible;
+                }
+
+                else
+                {
+                    Mistake_Height.Visibility = Visibility.Collapsed;
+                    globalHeight = Height.Text;
+                }
+
             }
+               
         }
         
 
         private void Age_TextChanged(object sender, TextChangedEventArgs e)
         {
-            globalAge = Age.Text;
+            if (!string.IsNullOrWhiteSpace(Age.Text))
+            {
+                if (int.Parse(Age.Text) > 100 || int.Parse(Age.Text) < 0)
+                {
+                    Mistake_Age.Content = "Введите коректное значение возраста!";
+                    Mistake_Age.Visibility = Visibility.Visible;
+                }
+
+                else
+                {
+                    Mistake_Age.Visibility = Visibility.Collapsed;
+                    globalAge = Age.Text;
+                }
+
+            }
         }
 
         private void Weight_TextChanged(object sender, TextChangedEventArgs e)
         {
-            globalWeight = Weight.Text;
+            if (!string.IsNullOrWhiteSpace(Weight.Text))
+            {
+                if (int.Parse(Weight.Text) > 200 || int.Parse(Weight.Text) < 2)
+                {
+                    Mistake_Weight.Content = "Введите коректное значение веса!";
+                    Mistake_Weight.Visibility = Visibility.Visible;
+                }
+
+                else
+                {
+                    Mistake_Weight.Visibility = Visibility.Collapsed;
+                    globalWeight = Weight.Text;
+                }
+
+            }
         }
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
@@ -115,7 +157,7 @@ namespace BMR
                     switch (selectedActiviry)
                     {
                         case Сидячий:
-                    }    
+                    }
                 }
             }
             else
@@ -126,7 +168,11 @@ namespace BMR
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-
+            Height.Text = null;
+            Weight.Text = null;
+            Age.Text = null;
+            TheGender.SelectedItem = null;
+            Activity.SelectedItem = null;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
