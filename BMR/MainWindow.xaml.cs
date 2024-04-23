@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace BMR
 {
@@ -147,23 +148,78 @@ namespace BMR
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            if (TheGender != null && Activity != null && globalAge != null && globalWeight != null && globalHeight != null)
+            if (TheGender.SelectedItem != null && Activity.SelectedItem != null && globalAge != null && globalWeight != null && globalHeight != null)
                
             {
                 string selectedGender = (string)TheGender.SelectedItem;
-                string selectedActiviry = (string)Activity.SelectedItem;
+                string selectedActivity = (string)Activity.SelectedItem;
                 if (selectedGender == "Мужской")
                 {
-                    switch (selectedActiviry)
+                    globalBMR = $"66 + 13.7 * {globalWeight} + 5 * {globalHeight} - 6.8 * {globalAge}";
+                    BMR.Content = new DataTable().Compute(globalBMR, null).ToString();
+                    switch (selectedActivity)
                     {
-                        case Сидячий:
+                        case "Сидячий":
+                            globalTEED = $"({globalBMR})* 1.2";
+                            TDEE.Content = new DataTable().Compute((globalTEED, null).ToString();
+                            break;
+                        case "Немного активный":
+                            globalTEED = $"({globalBMR}) * 1.375";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Средняя активность":
+                            globalTEED = $"({globalBMR}) * 1.55";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Большая активность":
+                            globalTEED = $"({globalBMR}) * 1.725";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Экстра нагрузка":
+                            globalTEED = $"({globalBMR}) * 1.9";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                    }
+                }
+                if (selectedGender == "Женский")
+                {
+                    globalBMR = $"655 + 9.6 * {globalWeight} + 1.8 * {globalHeight} - 4.7 * {globalAge}";
+                    BMR.Content = new DataTable().Compute(globalBMR, null).ToString();
+                    switch (selectedActivity)
+                    {
+                        case "Сидячий":
+                            globalTEED = $"({globalBMR}) * 1.2";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Немного активный":
+                            globalTEED = $"({globalBMR}) * 1.375";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Средняя активность":
+                            globalTEED = $"({globalBMR}) * 1.55";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Большая активность":
+                            globalTEED = $"({globalBMR}) * 1.725";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        case "Экстра нагрузка":
+                            globalTEED = $"({globalBMR}) * 1.9";
+                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            break;
+                        default:
+                            MessageBox.Show("Укажите все значения");
+                            break;
+
                     }
                 }
             }
+
             else
             {
                 MessageBox.Show("Укажите все значения");
             }
+
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -173,6 +229,8 @@ namespace BMR
             Age.Text = null;
             TheGender.SelectedItem = null;
             Activity.SelectedItem = null;
+            BMR.Content = null;
+            TDEE.Content = null;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
