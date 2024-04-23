@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BMR"
         mc:Ignorable="d"
         Title="MainWindow" Height="575" Width="470">
-    <Grid Opacity="0.8">
+    <Grid Opacity="0.7">
         <Grid.Background>
             <ImageBrush Opacity="0.8" ImageSource="/flours.jpg"/>
         </Grid.Background>

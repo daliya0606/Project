@@ -147,10 +147,9 @@ namespace BMR
 
             }
         }
-
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            if (TheGender.SelectedItem != null && Activity.SelectedItem != null && globalAge != null && globalWeight != null && globalHeight != null)
+            if (TheGender.SelectedItem != null && Activity.SelectedItem != null && globalAge != null && globalWeight != null && globalHeight != null && (int.Parse(Height.Text) <= 250 || int.Parse(Height.Text) >= 50) && (int.Parse(Weight.Text) <= 200 || int.Parse(Weight.Text) >= 2) && (int.Parse(Age.Text) <= 100 || int.Parse(Age.Text) >= 0))
                
             {
                 string selectedGender = (string)TheGender.SelectedItem;
@@ -241,6 +240,11 @@ namespace BMR
                     }
                 }
             }
+            else if (TheGender.SelectedItem != null && Activity.SelectedItem != null && globalAge != null && globalWeight != null && globalHeight != null && (int.Parse(Height.Text) > 250 || int.Parse(Height.Text) < 50) && (int.Parse(Weight.Text) > 200 || int.Parse(Weight.Text) < 2) && (int.Parse(Age.Text) > 100 || int.Parse(Age.Text) < 0))
+            {
+                MessageBox.Show("Введите корректные значения");
+            }
+
 
             else
             {
