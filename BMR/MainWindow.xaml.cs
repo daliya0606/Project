@@ -47,6 +47,8 @@ namespace BMR
         string globalHeight;
         string globalBMR;
         string globalTEED;
+        double globalresultTEED;
+        int globalroundedResultTEED;
 
         private void RemovingTheSymbols(TextBox textBox)
         {
@@ -156,56 +158,81 @@ namespace BMR
                 if (selectedGender == "Мужской")
                 {
                     globalBMR = $"66 + 13.7 * {globalWeight} + 5 * {globalHeight} - 6.8 * {globalAge}";
-                    BMR.Content = new DataTable().Compute(globalBMR, null).ToString();
+                    double resultBMR = Convert.ToDouble(new DataTable().Compute(globalBMR, null));
+                    int roundedResultBMR = Convert.ToInt32(Math.Round(resultBMR));
+                    BMR.Content = roundedResultBMR.ToString();
                     switch (selectedActivity)
                     {
                         case "Сидячий":
                             globalTEED = $"({globalBMR})* 1.2";
-                            TDEE.Content = new DataTable().Compute((globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Немного активный":
                             globalTEED = $"({globalBMR}) * 1.375";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Средняя активность":
                             globalTEED = $"({globalBMR}) * 1.55";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Большая активность":
                             globalTEED = $"({globalBMR}) * 1.725";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Экстра нагрузка":
                             globalTEED = $"({globalBMR}) * 1.9";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                     }
                 }
                 if (selectedGender == "Женский")
                 {
                     globalBMR = $"655 + 9.6 * {globalWeight} + 1.8 * {globalHeight} - 4.7 * {globalAge}";
-                    BMR.Content = new DataTable().Compute(globalBMR, null).ToString();
+                    double resultBMR = Convert.ToDouble(new DataTable().Compute(globalBMR, null));
+                    int roundedResultBMR = Convert.ToInt32(Math.Round(resultBMR));
+                    BMR.Content = roundedResultBMR.ToString(); 
+                    
                     switch (selectedActivity)
                     {
                         case "Сидячий":
                             globalTEED = $"({globalBMR}) * 1.2";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Немного активный":
                             globalTEED = $"({globalBMR}) * 1.375";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Средняя активность":
                             globalTEED = $"({globalBMR}) * 1.55";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Большая активность":
                             globalTEED = $"({globalBMR}) * 1.725";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         case "Экстра нагрузка":
                             globalTEED = $"({globalBMR}) * 1.9";
-                            TDEE.Content = new DataTable().Compute(globalTEED, null).ToString();
+                            globalresultTEED = Convert.ToDouble(new DataTable().Compute(globalTEED, null));
+                            globalroundedResultTEED = Convert.ToInt32(Math.Round(globalresultTEED));
+                            TDEE.Content = globalroundedResultTEED.ToString();
                             break;
                         default:
                             MessageBox.Show("Укажите все значения");
